@@ -1,0 +1,15 @@
+!#/bin/bash
+
+draw_progress() {
+    local i
+    local max_string_length=54
+    local result='['
+    for ((i = 0; i < $(($1 * max_string_length / 100)); i++)); do
+        result+='|'
+    done
+    for ((i = $(($1 * max_string_length / 100)); i < max_string_length; i++)); do
+        result+=' '
+    done
+    result+=']'
+    echo -ne "$result\r"
+}
